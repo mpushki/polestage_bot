@@ -1,0 +1,14 @@
+{
+    "svetlana_schuklina":{
+        "name": "Светлана Щуклина",
+        "inst": "@pilonutaya",
+        "types": "PoleSport, PoleExotic",
+        "image": "svetlana_schuklina"
+    },
+    "natalia_tamashova":{
+        "name": "Наталья Тамашова",
+        "inst": "@tomashovapolekats",
+        "types": "PoleSport, PoleExotic",
+        "image": "natalia_tamashova"
+    }
+}
