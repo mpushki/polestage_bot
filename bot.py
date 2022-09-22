@@ -84,8 +84,8 @@ def main() -> None:
     """Run the bot."""
     bot.set_my_commands(
         commands=[
-            telebot.types.BotCommand("week", "Рассписание на неделю"),
-            telebot.types.BotCommand("day", "Рассписание на сегодня"),
+            telebot.types.BotCommand("week", "Расписание на неделю"),
+            telebot.types.BotCommand("day", "Расписание на сегодня"),
             telebot.types.BotCommand("trainers", "Узнать о наших тренерах")
         ],
         # scope=telebot.types.BotCommandScopeChat(12345678)  # use for personal command for users
