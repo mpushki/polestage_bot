@@ -1,3 +1,89 @@
 {
-    "Mon": []
+    "Monday": [
+        "10.00 Exotic Flow @sveta_luchkina",
+        "11.00 Pole Fitness @lyudmila_bukrina",
+        "12.00 Stretching @lyudmila_bukrina",
+        "18.00 Pole Kids ‼️NEW‼️ @guseva_nata",
+        "18.00 Exotic Tricks @scarlett_o_hara_poledancer",
+        "18.00 Contemporary @prosvet.ballet",
+        "19.00 Exotic Dance @scarlett_o_hara_poledancer",
+        "19.00 Pole Fit Flexibility @lyudmila_bukrina",
+        "19.00 Pole Fitness @guseva_nata",
+        "20.00 Stretching @lyudmila_bukrina",
+        "20.00 Pole Fitness @scarlett_o_hara_poledancer",
+        "21.00 Belly Dance @sarkis.lifestyle "
+    ],
+    "Tuesday": [
+        "10.00 Pole Fitness @lyudmila_bukrina",
+        "11.00 Stretching @lyudmila_bukrina",
+        "12.00 Pole Fitness @scarlett_o_hara_poledancer",
+        "13.00 Exotic Dance @scarlett_o_hara_poledancer",
+        "18.00 Exotic Dance ‼️ NEW‼️@sveta_luchkina НАБОР ГРУППЫ С «0»",
+        "18.00 Pole Fitness @lolakimo",
+        "19.00 Stretching @sveta_luchkina",
+        "19.00 Exotic Choreo @tomashovapolekats",
+        "19.00 Pole Fitness @pilonutaya",
+        "20.00 Pole Fit Flexibility @tomashovapolekats",
+        "20.00 Exotic Flow @sveta_luchkina",
+        "20.00 Exotic Hard @pilonutaya",
+        "21.00 Pole Fit Intensive @pilonutaya"
+    ],
+    "Wednesday":[
+        "10.00 Exotic Choreo @tomashovapolekats",
+        "11.00 Exotic Tricks @tomashovapolekats",
+        "12.00 Pole Fitness @lolakimo",
+        "13.00 Stretching @lolakimo",
+        
+        "18.00 Stretching @lyudmila_bukrina",
+        "18.00 Pole Fitnesse ‼️NEW‼️ @scarlett_o_hara_poledancer НАБОР ГРУППЫ С «0»",
+        "19.00 Pole Fit Flow @lyudmila_bukrina",
+        "19:00 Exotic Tricks ‼️NEW‼️ @scarlett_o_hara_poledancer",
+        "20.00 Bendy Back @lyudmila_bukrina",
+        "21.00 Belly Dance @sarkis.lifestyle"
+    ],
+    "Thursday": [
+        "10.00 Exotic Flow Света Лучкина",
+        "11.00 Pole Fitness Света Лучкина",
+        "12.00 Bendy Back Света Лучкина",
+
+        "17.00 Pole Kids ‼️NEW‼️ @guseva_nata НАБОР ГРУППЫ С «0»",
+        "18.00 Pole Fitness @lyudmila_bukrina",
+        "18.00 Pole Fitness ‼️NEW‼️ @sveta_luchkina НАБОР ГРУППЫ С «0»",
+        "18.00 Exotic Tricks @scarlett_o_hara_poledancer",
+        "19.00 Exotic Dance @scarlett_o_hara_poledancer",
+        "19.00 Stretching Людмила Букрина",
+        "19.00 Pole Fit Flow @tomashovapolekats",
+        "20.00 Exotic Dance ‼️NEW‼️ @sveta_luchkina",
+        "20.00 Pole Fitness @scarlett_o_hara_poledancer",
+        "20.00 Exotic Flow @tomashovapolekats"
+    ],
+    "Friday":[
+        "12.00 Pole Fitness @scarlett_o_hara_poledancer",
+        "13.00 Exotic Dance @scarlett_o_hara_poledancer",
+
+        "18.00 Pole Fitness @dorian_danza",
+        "19.00 Exotic Hard @pilonutaya",
+        "19.00 Bendy Back @dorian_danza",
+        "20.00 Pole Fitness @pilonutaya",
+        "20.00 Exotic Dance @sveta_luchkina НАБОР ГРУППЫ С «0»",
+        "20.00 Exotic Hard ‼️NEW‼️ @dorian_danza",
+        "21.00 Pol Fitness‼️NEW‼️@sveta_luchkina НАБОР ГРУППЫ С «0»"
+    ],
+    "Saturday": [
+        "11.00 Pole Fitness @guseva_nata",
+        "11.00 Aerial Pole @lyudmila_bukrina",
+        "12.00 Bendy Back @lyudmila_bukrina",
+        "13.00 Pole Fit Flexibility @lyudmila_bukrina"
+    ],
+    "Sunday": [
+        "11.00 Pole Fitness @lyudmila_bukrina",
+        "12.00 Exotic Tricks @scarlett_o_hara_poledancer",
+        "12.00 Stretching @lyudmila_bukrina",
+        "13.00 Exotic Dance @scarlett_o_hara_poledancer",
+        "14.00 Pole Fitness @scarlett_o_hara_poledancer",
+        "14.00 Base Thech Exotic @dorian_danza",
+        "15.00 Exotic Flow @dorian_danza",
+        "16.00 Stretching Intensive @dorian_danza"
+    ]
+
 }

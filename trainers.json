@@ -10,5 +10,23 @@
         "inst": "@tomashovapolekats",
         "types": "PoleSport, PoleExotic",
         "image": "natalia_tamashova"
+    },
+    "dorian_danza": {
+        "name": "Дориан",
+        "inst": "@dorian_danza",
+        "types": "PoleSport, PoleExotic, Stretching",
+        "image": "dorian_danza"
+    },
+    "sveta_luchkina": {
+        "name": "Света Лучкина",
+        "inst": "@sveta_luchkina",
+        "types": "PoleSport, PoleFlow",
+        "image": "sveta_luchkina"
+    },
+    "guseva_nata": {
+        "name": "Наталья Гусева",
+        "inst": "@guseva_nata",
+        "types": "PoleSport",
+        "image": "guseva_nata"
     }
 }
