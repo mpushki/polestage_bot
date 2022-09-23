@@ -1,3 +1,4 @@
+from email import message
 import telebot
 import json
 import datetime
@@ -52,21 +53,10 @@ def get_text_messages(message):
         fdfdfd = next(jjj, None)
         if fdfdfd:
             trainer1, trainer_data1 = fdfdfd
-            print(trainer1, trainer_data1)
             kk = telebot.types.InlineKeyboardButton(text=trainer_data1["name"], callback_data=trainer1)
             keyboard.row(fff, kk)
         else:
             keyboard.row(fff)
-        # index = list(data.keys()).index(trainer)
-        # print(index)
-        # if index % 2 == 1:
-        #     keyboard.row(*keys)
-        #     keys = []
-        # key = telebot.types.InlineKeyboardButton(text=trainer_data["name"], callback_data=trainer)
-        # keys.append(key)
-        # print(keys)
-
-        # keyboard.add(key); #добавляем кнопку в клавиатуру
 
     bot.send_message(message.chat.id, "Список:", reply_markup=keyboard)
 
@@ -74,9 +64,14 @@ def get_text_messages(message):
 def callback_worker(call):
     if data.get(call.data, None): #call.data это callback_data, которую мы указали при объявлении кнопки
         trainer_data = data[call.data]
-        print(trainer_data)
         bot.send_photo(call.message.chat.id, photo=open(f'assets/{trainer_data["image"]}.jpg', 'rb'))
-        bot.send_message(call.message.chat.id, trainer_data['name'] + ", " + trainer_data['inst'] + ", " + trainer_data['types'])
+
+        message = f"{trainer_data['name']}\n" \
+                  f"Inst: {trainer_data['inst']}\n" \
+                  f"Основные направления: {trainer_data['types']}\n\n" \
+                  f"{trainer_data.get('description', '')}"
+
+        bot.send_message(call.message.chat.id, message)
         
 
 
