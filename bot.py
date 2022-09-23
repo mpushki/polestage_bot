@@ -27,14 +27,14 @@ def get_text_messages(message):
     now = datetime.datetime.now()
     print(now)
     today_timetable = timetable[now.strftime("%A")]
-    bot.send_message(message.chat.id, f"Рассписание на сегодня {now.strftime('%d.%m')}")
+    bot.send_message(message.chat.id, f"Расписание на сегодня {now.strftime('%d.%m')}")
     text = '\n'.join(today_timetable)
     bot.send_message(message.chat.id, text)
 
 
 @bot.message_handler(commands=['week'])
 def get_text_messages(message):
-    bot.send_message(message.chat.id, "Рассписание на неделю")
+    bot.send_message(message.chat.id, "Расписание на неделю")
     text = ""
     for day, time_of_day in timetable.items():
         text += f"{day}\n" + "\n".join(time_of_day) + "\n\n"
