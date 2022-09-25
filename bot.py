@@ -20,7 +20,10 @@ with open('timetable.json',"r", encoding="utf-8") as file:
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    # bot.reply_to(message, "Добро пожаловать")
+    with open('chat_ids.txt', 'r+') as file:
+        content = file.read()
+        if not str(message.chat.id) in content:
+            file.write(f"{message.chat.id}\n")
     bot.send_message(message.chat.id, "Добро пожаловать в PoleStage")
 
 
