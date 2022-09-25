@@ -1,11 +1,12 @@
-from email import message
-import telebot
+import os
 import json
+import telebot
 import datetime
 
+from constants import RU_WEEK
 
-bot = telebot.TeleBot('5666693511:AAE9GxOtjStnkyIJZ4RCG9B8ohCGm3RTg2E')
-
+TOKEN = '5666693511:AAE9GxOtjStnkyIJZ4RCG9B8ohCGm3RTg2E'
+bot = telebot.TeleBot(TOKEN)
 
 data = ""
 with open('trainers.json',"r", encoding="utf-8") as file:
@@ -26,7 +27,7 @@ def send_welcome(message):
 @bot.message_handler(commands=['day'])
 def get_text_messages(message):
     now = datetime.datetime.now()
-    print(now)
+    print(f"Today is {now}")
     today_timetable = timetable[now.strftime("%A")]
     bot.send_message(message.chat.id, f"Расписание на сегодня {now.strftime('%d.%m')}")
     text = '\n'.join(today_timetable)
@@ -38,9 +39,9 @@ def get_text_messages(message):
     bot.send_message(message.chat.id, "Расписание на неделю")
     text = ""
     for day, time_of_day in timetable.items():
-        text += f"{day}\n" + "\n".join(time_of_day) + "\n\n"
+        ru_day = RU_WEEK[day]
+        text += f"{ru_day}\n" + "\n".join(time_of_day) + "\n\n"
     bot.send_message(message.chat.id, text)
-
 
 
 @bot.message_handler(commands=['trainers'])
@@ -72,24 +73,22 @@ def callback_worker(call):
                   f"{trainer_data.get('description', '')}"
 
         bot.send_message(call.message.chat.id, message)
-        
+
 
 
 def main() -> None:
     """Run the bot."""
+    print("Bot are running...")
     bot.set_my_commands(
         commands=[
             telebot.types.BotCommand("week", "Расписание на неделю"),
             telebot.types.BotCommand("day", "Расписание на сегодня"),
             telebot.types.BotCommand("trainers", "Узнать о наших тренерах")
         ],
-        # scope=telebot.types.BotCommandScopeChat(12345678)  # use for personal command for users
-        # scope=telebot.types.BotCommandScopeAllPrivateChats()  # use for all private chats
     )
 
 
-    bot.polling(none_stop=True, interval=0)
-
+    bot.infinity_polling(none_stop=True, interval=0)
 
 if __name__ == "__main__":
     main()
