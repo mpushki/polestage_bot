@@ -1,7 +1,10 @@
 import os
 import json
+import time
 import telebot
 import datetime
+from flask import Flask, request
+app = Flask(__name__)
 
 from constants import RU_WEEK
 
@@ -16,6 +19,17 @@ with open('trainers.json',"r", encoding="utf-8") as file:
 timetable = ""
 with open('timetable.json',"r", encoding="utf-8") as file:
     timetable = json.load( file)
+
+
+bot.remove_webhook()
+time.sleep(1)
+bot.set_webhook(url="https://mariiapushkina.pythonanywhere.com/")
+
+@app.route('/', methods=["POST"])
+def webhook():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    print("Message")
+    return "ok", 200
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -91,7 +105,8 @@ def main() -> None:
     )
 
 
-    bot.infinity_polling(none_stop=True, interval=0)
+    # bot.infinity_polling(none_stop=True, interval=0)
 
 if __name__ == "__main__":
     main()
+    # app.run()
