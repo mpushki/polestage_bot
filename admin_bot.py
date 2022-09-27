@@ -1,7 +1,7 @@
+import os
 import telebot
 
-
-TOKEN = '5466837268:AAHYvFC7IMhKiWVUUmEE-mslIopx1D-hwTI'
+TOKEN = os.getenv('POLESTAGEADMIN_TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
