@@ -8,33 +8,37 @@ app = Flask(__name__)
 
 from constants import RU_WEEK
 
-TOKEN = '5666693511:AAE9GxOtjStnkyIJZ4RCG9B8ohCGm3RTg2E'
-bot = telebot.TeleBot(TOKEN)
+TOKEN = os.getenv('POLESTAGE_TOKEN')
+bot = telebot.TeleBot(TOKEN, threaded=False)
+secret = "GUIDtest"
 
 data = ""
-with open('trainers.json',"r", encoding="utf-8") as file:
+with open('/home/mariiapushkina/polestage_server/trainers.json',"r", encoding="utf-8") as file:
     data = json.load( file)
 
 
 timetable = ""
-with open('timetable.json',"r", encoding="utf-8") as file:
+with open('/home/mariiapushkina/polestage_server/timetable.json',"r", encoding="utf-8") as file:
     timetable = json.load( file)
 
 
 bot.remove_webhook()
 time.sleep(1)
-bot.set_webhook(url="https://mariiapushkina.pythonanywhere.com/")
+bot.set_webhook(url="https://mariiapushkina.pythonanywhere.com/{}".format(secret), max_connections=1)
 
-@app.route('/', methods=["POST"])
+@app.route('/{}'.format(secret), methods=["POST"])
 def webhook():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    if request.headers.get('content-type') == 'application/json':
+        json_string = request.get_data().decode('utf-8')
+        update = telebot.types.Update.de_json(json_string)
+        bot.process_new_updates([update])
     print("Message")
     return "ok", 200
 
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    with open('chat_ids.txt', 'r+') as file:
+    with open('/home/mariiapushkina/polestage_server/chat_ids.txt', 'r+') as file:
         content = file.read()
         if not str(message.chat.id) in content:
             file.write(f"{message.chat.id}\n")
@@ -109,4 +113,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-    # app.run()
+    app.run()
+
