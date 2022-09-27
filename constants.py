@@ -7,3 +7,9 @@ RU_WEEK = {
     "Saturday": "Суббота",
     "Sunday": "Воскресение"
 }
+
+DEV_PATH = ''
+PROD_PATH = '/home/mariiapushkina/polestage_server/'
+
+WEB_APP = 'https://mariiapushkina.pythonanywhere.com/'
+

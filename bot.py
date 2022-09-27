@@ -6,27 +6,31 @@ import datetime
 from flask import Flask, request
 app = Flask(__name__)
 
-from constants import RU_WEEK
+from constants import RU_WEEK, PROD_PATH, DEV_PATH, WEB_APP
+
+DEBUG = os.getenv('FLASK_DEBUG')
+PATH = DEV_PATH if DEBUG else PROD_PATH
 
 TOKEN = os.getenv('POLESTAGE_TOKEN')
 bot = telebot.TeleBot(TOKEN, threaded=False)
 secret = "GUIDtest"
 
+
 data = ""
-with open('/home/mariiapushkina/polestage_server/trainers.json',"r", encoding="utf-8") as file:
+with open(f'{PATH}trainers.json',"r", encoding="utf-8") as file:
     data = json.load( file)
 
 
 timetable = ""
-with open('/home/mariiapushkina/polestage_server/timetable.json',"r", encoding="utf-8") as file:
+with open(f'{PATH}timetable.json',"r", encoding="utf-8") as file:
     timetable = json.load( file)
 
 
 bot.remove_webhook()
 time.sleep(1)
-bot.set_webhook(url="https://mariiapushkina.pythonanywhere.com/{}".format(secret), max_connections=1)
+bot.set_webhook(url=f"{WEB_APP}{secret}", max_connections=1)
 
-@app.route('/{}'.format(secret), methods=["POST"])
+@app.route(f'/{secret}', methods=["POST"])
 def webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
@@ -38,7 +42,7 @@ def webhook():
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    with open('/home/mariiapushkina/polestage_server/chat_ids.txt', 'r+') as file:
+    with open(f'{PATH}chat_ids.txt', 'r+') as file:
         content = file.read()
         if not str(message.chat.id) in content:
             file.write(f"{message.chat.id}\n")
@@ -107,9 +111,6 @@ def main() -> None:
             telebot.types.BotCommand("trainers", "Узнать о наших тренерах")
         ],
     )
-
-
-    # bot.infinity_polling(none_stop=True, interval=0)
 
 if __name__ == "__main__":
     main()
