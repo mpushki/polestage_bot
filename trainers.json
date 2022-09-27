@@ -1,15 +1,21 @@
 {
-    "svetlana_schuklina":{
-        "name": "Светлана Щуклина",
-        "inst": "@pilonutaya",
-        "types": "PoleSport, PoleExotic",
-        "image": "svetlana_schuklina"
-    },
     "natalia_tamashova":{
         "name": "Наталья Тамашова",
         "inst": "@tomashovapolekats",
         "types": "PoleSport, PoleExotic",
         "image": "natalia_tamashova"
+    },
+    "sarkis.lifestyle": {
+        "name": "Саркис",
+        "inst": "@sarkis.lifestyle",
+        "types": "Bellydance",
+        "image": "sarkis"
+    },
+    "svetlana_schuklina":{
+        "name": "Светлана Щуклина",
+        "inst": "@pilonutaya",
+        "types": "PoleSport, PoleExotic",
+        "image": "svetlana_schuklina"
     },
     "dorian_danza": {
         "name": "Дориан",
@@ -29,5 +35,11 @@
         "inst": "@guseva_nata",
         "types": "PoleSport",
         "image": "guseva_nata"
+    },
+    "scarlett_o_hara_poledancer": {
+        "name": "Татьяна Курочкина",
+        "inst": "@scarlett_o_hara_poledancer",
+        "types": "Pole Exotic, Exotic Tricks, Pole Fitness",
+        "image": "scarlett_o_hara_poledancer"
     }
 }
