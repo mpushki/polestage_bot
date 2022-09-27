@@ -41,5 +41,23 @@
         "inst": "@scarlett_o_hara_poledancer",
         "types": "Pole Exotic, Exotic Tricks, Pole Fitness",
         "image": "scarlett_o_hara_poledancer"
+    },
+    "prosvet.ballet": {
+        "name": "Ольга Виноградова",
+        "inst": "@prosvet.ballet",
+        "types": "Contemporary",
+        "image": "prosvet"
+    },
+    "lolakimo": {
+        "name": "Ольга Якимова",
+        "inst": "@lolakimo",
+        "types": "Pole Fitness, Stretching",
+        "image": "lolakimo"
+    },
+    "lyudmila_bukrina": {
+        "name": "Людмила Букрина",
+        "inst": "@lyudmila_bukrina",
+        "types": "Pole Fitness, Stretching, Bendy Back",
+        "image": "lyudmila_bukrina"
     }
 }
