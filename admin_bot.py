@@ -12,4 +12,18 @@ def send_welcome(message):
 def get_messages(message):
     pass
 
-bot.polling()
+
+
+def main() -> None:
+    """Run the bot."""
+    print("Admin Bot are running...")
+    bot.set_my_commands(
+        commands=[
+            telebot.types.BotCommand("notification", "Отправить объявление"),
+        ],
+    )
+
+    bot.polling()
+
+if __name__ == "__main__":
+    main()
