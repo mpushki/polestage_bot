@@ -30,6 +30,7 @@ bot.remove_webhook() # need if web app will be releaded
 time.sleep(1)
 bot.set_webhook(url=f"{WEB_APP}{secret}", max_connections=1)
 
+
 @app.route(f'/{secret}', methods=["POST"])
 def webhook():
     if request.headers.get('content-type') == 'application/json':
@@ -75,24 +76,25 @@ def get_text_messages(message):
 
 @bot.message_handler(commands=['trainers'])
 def get_text_messages(message):
-    keyboard = telebot.types.InlineKeyboardMarkup(); #наша клавиатура
-    keys = []
-    jjj = iter(trainers.items())
-    for trainer, trainer_data in jjj:
-        fff = telebot.types.InlineKeyboardButton(text=trainer_data["name"], callback_data=trainer)
-        fdfdfd = next(jjj, None)
-        if fdfdfd:
-            trainer1, trainer_data1 = fdfdfd
-            kk = telebot.types.InlineKeyboardButton(text=trainer_data1["name"], callback_data=trainer1)
-            keyboard.row(fff, kk)
+    keyboard = telebot.types.InlineKeyboardMarkup() # create a new keyboard with all trainers
+    iter_trainers = iter(trainers.items())
+    for trainer_id, trainer_data in iter_trainers:
+        key = telebot.types.InlineKeyboardButton(text=trainer_data["name"], callback_data=trainer_id)
+        next_trainer = next(iter_trainers, None)
+        if next_trainer:
+            # To show all trainers for 2 columns
+            next_trainer_id, next_trainer_data = next_trainer
+            second_key = telebot.types.InlineKeyboardButton(text=next_trainer_data["name"], callback_data=next_trainer_id)
+            keyboard.row(key, second_key)
         else:
-            keyboard.row(fff)
+            keyboard.row(key)
 
-    bot.send_message(message.chat.id, "Список:", reply_markup=keyboard)
+    bot.send_message(message.chat.id, "Наши тренера:", reply_markup=keyboard)
+
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
-    if trainers.get(call.data, None): #call.data это callback_data, которую мы указали при объявлении кнопки
+    if trainers.get(call.data, None):
         trainer_data = trainers[call.data]
         bot.send_photo(call.message.chat.id, photo=open(f'assets/{trainer_data["image"]}.jpg', 'rb'))
 
@@ -102,7 +104,6 @@ def callback_worker(call):
                   f"{trainer_data.get('description', '')}"
 
         bot.send_message(call.message.chat.id, message)
-
 
 
 def main() -> None:
