@@ -96,7 +96,7 @@ def get_text_messages(message):
 def callback_worker(call):
     if trainers.get(call.data, None):
         trainer_data = trainers[call.data]
-        bot.send_photo(call.message.chat.id, photo=open(f'assets/{trainer_data["image"]}.jpg', 'rb'))
+        bot.send_photo(call.message.chat.id, photo=open(f'{PATH}assets/{trainer_data["image"]}.jpg', 'rb'))
 
         message = f"{trainer_data['name']}\n" \
                   f"Inst: {trainer_data['inst']}\n" \
