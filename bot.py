@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 from constants import RU_WEEK, PROD_PATH, DEV_PATH, WEB_APP
 
-DEBUG = os.getenv('FLASK_DEBUG')
+DEBUG = os.getenv('FLASK_DEBUG', False)
 PATH = DEV_PATH if DEBUG else PROD_PATH
 
 TOKEN = os.getenv('POLESTAGE_TOKEN')
