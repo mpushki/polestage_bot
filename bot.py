@@ -45,7 +45,7 @@ def webhook():
         update = telebot.types.Update.de_json(json_string)
         # Telegram can repeat update if get any status except 200
         # Need check update_id to ignore repeated updates
-        update_id = update['update_id']
+        update_id = update.update_id
         with open(f'{PATH}update_id.txt', 'r+') as file:
             content = file.read()
             if not update_id == content:
