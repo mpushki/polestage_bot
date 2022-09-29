@@ -1,15 +1,22 @@
 import os
 import json
 import time
+import logging
 import telebot
 import datetime
 from flask import Flask, request
+
+
+logging.basicConfig(format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
+
 app = Flask(__name__)
 
+from models import Bot
 from constants import RU_WEEK, PROD_PATH, DEV_PATH, WEB_APP
 
 DEBUG = os.getenv('FLASK_DEBUG', False)
 PATH = DEV_PATH if DEBUG else PROD_PATH
+user_bot = Bot(PATH)
 
 TOKEN = os.getenv('POLESTAGE_TOKEN')
 bot = telebot.TeleBot(TOKEN, threaded=False)
@@ -36,7 +43,17 @@ def webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
         update = telebot.types.Update.de_json(json_string)
-        bot.process_new_updates([update])
+        # Telegram can repeat update if get any status except 200
+        # Need check update_id to ignore repeated updates
+        update_id = update['update_id']
+        with open(f'{PATH}update_id.txt', 'r+') as file:
+            content = file.read()
+            if not update_id == content:
+                file.seek(0)
+                file.write(update_id)
+                file.truncate()
+
+                bot.process_new_updates([update])
     return "ok", 200
 
 
