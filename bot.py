@@ -50,7 +50,7 @@ def webhook():
             content = file.read()
             if not update_id == content:
                 file.seek(0)
-                file.write(update_id)
+                file.write(str(update_id))
                 file.truncate()
 
                 bot.process_new_updates([update])
