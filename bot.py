@@ -35,7 +35,10 @@ with open(f'{PATH}timetable.json',"r", encoding="utf-8") as file:
 
 bot.remove_webhook() # need if web app will be releaded
 time.sleep(1)
-bot.set_webhook(url=f"{WEB_APP}{secret}", max_connections=1)
+
+# Telegram can repeat update if get any status except 200
+# Need add drop_pending_updates to ignore repeated updates
+bot.set_webhook(url=f"{WEB_APP}{secret}", max_connections=1, drop_pending_updates=True)
 
 
 @app.route(f'/{secret}', methods=["POST"])
@@ -43,17 +46,7 @@ def webhook():
     if request.headers.get('content-type') == 'application/json':
         json_string = request.get_data().decode('utf-8')
         update = telebot.types.Update.de_json(json_string)
-        # Telegram can repeat update if get any status except 200
-        # Need check update_id to ignore repeated updates
-        update_id = update.update_id
-        with open(f'{PATH}update_id.txt', 'r+') as file:
-            content = file.read()
-            if not update_id == content:
-                file.seek(0)
-                file.write(str(update_id))
-                file.truncate()
-
-                bot.process_new_updates([update])
+        bot.process_new_updates([update])
     return "ok", 200
 
 
