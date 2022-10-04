@@ -12,7 +12,7 @@ logging.basicConfig(format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s :
 app = Flask(__name__)
 
 from models import Bot
-from constants import RU_WEEK, PROD_PATH, DEV_PATH, WEB_APP
+from constants import RU_WEEK, PROD_PATH, DEV_PATH, WEB_APP, WELCOME_MSG
 
 DEBUG = os.getenv('FLASK_DEBUG', False)
 PATH = DEV_PATH if DEBUG else PROD_PATH
@@ -57,11 +57,8 @@ def send_welcome(message):
         if not str(message.chat.id) in content:
             # Saving chart _ids to send info notifications for all users
             file.write(f"{message.chat.id}\n")
-    welcome_message = 'Добро пожаловать в PoleStage \U0001F60A\n\n'\
-    'Здесь вы можете получить актуальную инфомацию о расписании и наших тренерах, '\
-    'а также получать моментальные нотификации о заменах, акциях и мероприятиях студии.'
 
-    bot.send_message(message.chat.id, welcome_message)
+    bot.send_message(message.chat.id, WELCOME_MSG)
 
 
 @bot.message_handler(commands=['day'])
